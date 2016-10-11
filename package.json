@@ -1,0 +1,21 @@
+{
+  "name": "first",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "dependencies": {
+    "mock": "^0.1.1",
+    "mockjs": "^1.0.1-beta3",
+    "react": "15.3.2",
+    "react-native": "0.34.1",
+    "react-native-barcodescanner": "^3.1.1",
+    "react-native-camera": "git+https://github.com/lwansbrough/react-native-camera.git",
+    "react-native-scrollable-tab-view": "^0.6.0",
+    "react-native-storage": "^0.1.4",
+    "react-native-swiper": "^1.5.0",
+    "react-native-vector-icons": "^2.1.0",
+    "react-native-vibration": "^0.2.0"
+  }
+}
