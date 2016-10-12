@@ -18,12 +18,14 @@ import {
 
 const {width,height}=Dimensions.get('window');
 import Icon from 'react-native-vector-icons/Ionicons';
+import SellerDetail from './sellerDetail';
+
 export default class ListviewData extends Component {
     constructor(props) {
     super(props);
     this.state = {
         rowData:this.props.rowData,
-        onPress:this.props.onPress
+        // onPress:this.props.onPress
     };
   }
 //   render() {
@@ -55,7 +57,7 @@ export default class ListviewData extends Component {
   // }
     render() {
       return (
-        <TouchableOpacity onPress={this.state.onPress}>
+        <TouchableOpacity onPress={()=>{this.props.gotoSellerDetail(this.props.rowData)}}>
           <View style={styles.wrapper}>
             <Image source={{uri:this.state.rowData.thumb}} style={{width:70,height:70}}/>
             <View style={styles.rightView}>
@@ -80,19 +82,8 @@ export default class ListviewData extends Component {
 
       );
     }
-    gotoSellerDetai=()=>{
-      // const {navigator}=this.props;
-      // if (navigator) {
-      //   navigator.push({
-      //     name:'sellerDetail',
-      //     compoennt:SellerDetail,
-      //     params:{
-      //       rowData:this.state.rowData
-      //     }
-      //   })
-      // }
-    }
   }
+
 
 
 const styles = StyleSheet.create({
@@ -126,9 +117,10 @@ const styles = StyleSheet.create({
    },
    discount:{
      backgroundColor:'#ec6638',
-     width:14,
-     height:14,
-     borderRadius:7,
+     width:20,
+     height:20,
+     borderRadius:10,
+     overflow:'hidden',
      justifyContent:'center',
      alignItems:'center',
      marginRight:width/4

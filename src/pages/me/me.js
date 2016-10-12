@@ -13,13 +13,30 @@ import {
   Dimensions,
   Image,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  Navigator
 } from 'react-native';
 
 const {width,height}=Dimensions.get('window');
 import Icon from 'react-native-vector-icons/Ionicons';
 import MeItem from './meItem';
+import Zcfb from './zcfb';
+
 export default class Me extends Component {
+  render(){
+    return(
+      <Navigator
+      initialRoute={{name:'memain',component:MeMain}}
+      renderScene={(route,navigator)=>{
+        let Component = route.component;
+        return <Component {...route.params} navigator={navigator}/>
+      }}/>
+    )
+  }
+}
+
+  class MeMain extends Component{
+
     constructor(props) {
     super(props);
     this.state = {
@@ -58,7 +75,7 @@ export default class Me extends Component {
             <MeItem lefttitle='消费积分' leftnumber=':0.0'/>
           </TouchableOpacity>
           <TouchableOpacity onPress={this.goTolq}>
-            <MeItem lefttitle='体现积分' leftnumber=':0.0'/>
+            <MeItem lefttitle='提现积分' leftnumber=':0.0'/>
           </TouchableOpacity>
           <View style={{height:10}}></View>
           <TouchableOpacity onPress={this.goTolq}>
@@ -82,11 +99,29 @@ export default class Me extends Component {
           <TouchableOpacity onPress={this.goTolq}>
             <MeItem lefttitle='推荐有奖，我要推荐'/>
           </TouchableOpacity>
+          <TouchableOpacity onPress={this.goTozcfb}>
+            <MeItem lefttitle='政策发布'/>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.goTolq}>
+            <MeItem lefttitle='最新资讯'/>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.goTolq}>
+            <MeItem lefttitle='更多'/>
+          </TouchableOpacity>
          </ScrollView>
       </View>
     );
   }
   goTolq=()=>{alert('123')}
+  goTozcfb=()=>{
+    const {navigator}=this.props;
+    if (navigator){
+      navigator.push({
+        name:'zcfb',
+        component:Zcfb
+      })
+    }
+  }
 }
 
 const styles = StyleSheet.create({

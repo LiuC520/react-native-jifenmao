@@ -38,7 +38,6 @@ export default class Seller extends Component {
     return (
       <Navigator
       initialRoute={{name: 'sellermain',component:SellerMain}}
-
       renderScene={
             (route, navigator) =>
              {
@@ -148,7 +147,7 @@ class SellerMain extends Component {
         dataSource={this.state.dataSource}
         renderRow={
           (rowData)=>{
-            return <ListviewData rowData={rowData} onPress={(rowData)=>{this.pushToSellerDetail(rowData)}}/>
+            return <ListviewData rowData={rowData} gotoSellerDetail={(rowData)=>this.gotoSellerDetail(rowData)}/>
           }
         }
         enableEmptySections={true}
@@ -168,17 +167,18 @@ class SellerMain extends Component {
       </View>
     );
   }
-  pushToSellerDetail=(rowData)=>{
-    const {navigator}=this.props;
-    if (navigator) {
-      navigator.push({
+  gotoSellerDetail(rowData){
+    // const {navigator}=this.props;
+    console.log(rowData);
+      this.props.navigator.push({
         name:'sellerDetail',
-        compoennt:SellerDetail,
+        component:SellerDetail,
         params:{
           rowData:rowData
         }
       })
-    }
+      // console.log(rowData);
+
   }
   //下拉刷新的回调   从服务器获取最新的数据
   _onRefresh=()=>{

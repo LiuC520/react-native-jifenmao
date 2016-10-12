@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
      right:20,
      backgroundColor:'white',
      borderRadius:20,
+     overflow:'hidden',
    },
    text:{
      color:'black',
