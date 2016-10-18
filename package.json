@@ -9,7 +9,8 @@
     "mock": "^0.1.1",
     "mockjs": "^1.0.1-beta3",
     "react": "15.3.2",
-    "react-native": "0.34.1",
+    "react-native": "^0.35.0",
+    "react-native-baidu-map": "^0.4.2",
     "react-native-barcodescanner": "^3.1.1",
     "react-native-camera": "git+https://github.com/lwansbrough/react-native-camera.git",
     "react-native-scrollable-tab-view": "^0.6.0",
@@ -17,6 +18,8 @@
     "react-native-swiper": "^1.5.0",
     "react-native-vector-icons": "^2.1.0",
     "react-native-vibration": "^0.2.0",
-    "react-native-video": "^0.9.0"
-  }
+    "react-native-video": "^0.9.0",
+    "react-native-wechat": "^1.7.0"
+  },
+  "devDependencies": {}
 }

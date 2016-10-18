@@ -13,7 +13,8 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
-  WebView
+  WebView,
+  Platform
 } from 'react-native';
 
 const {width,height}=Dimensions.get('window');
@@ -36,7 +37,7 @@ export default class Zcfb extends Component {
       <View style={styles.wrapper}>
         <TopTitleCell title='商家详情' goBack={this.toback} leftTitle='返回'/>
 
-        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{padding:10}}>
+        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{padding:10,marginTop:Platform.OS == 'ios' ? 55:35,}}>
           <TouchableOpacity onPress={this.playUrl}>
             <Image source={require('../../images/jfmvideo.png')} style={{width:width,height:height/4,marginRight:15}} resizeMode="contain"/>
             <View  style={styles.playTitle}>
@@ -73,6 +74,7 @@ export default class Zcfb extends Component {
       navigator.pop()
     }
   }
+
   playUrl=()=>{
     const {navigator}=this.props;
     if (navigator) {

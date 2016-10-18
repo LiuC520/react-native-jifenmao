@@ -14,11 +14,19 @@ import {
   Dimensions,
   Image,
   TouchableOpacity,
+  Platform
 } from 'react-native';
+import {
+  MapView,
+  MapTypes,
+  Geolocation
+} from 'react-native-baidu-map';
 
 const {width,height}=Dimensions.get('window');
 import Icon from 'react-native-vector-icons/Ionicons';
+
 import TopTitleCell from '../common/topTitleCell';
+import BaiduMapDemo from './baidumapdemo';
 
 export default class BaiduMap extends Component {
     constructor(props) {
@@ -31,6 +39,7 @@ export default class BaiduMap extends Component {
       <View style={styles.wrapper}>
         <TopTitleCell title='商家详情' goBack={this.toback} leftTitle='返回'/>
 
+        <BaiduMapDemo style={{marginTop:Platform.OS == 'ios' ? 55:35}}/>
       </View>
     );
   }
@@ -45,7 +54,7 @@ export default class BaiduMap extends Component {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor:'#bbbbbb'
+    backgroundColor:'#bbbbbb',
    },
 
 

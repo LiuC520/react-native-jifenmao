@@ -71,7 +71,10 @@ const styles = StyleSheet.create({
     paddingRight:5,
     backgroundColor:'white',
     height:35,
-    marginTop:Platform.OS == 'ios' ? 20:0
+    position:'absolute',
+    left:0,
+    right:0,
+    top:Platform.OS == 'ios' ? 20:0
    },
    leftback:{
      position:'absolute',

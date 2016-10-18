@@ -6,35 +6,30 @@
 
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
-  TextInput,
   Dimensions,
-  Image,
-  TouchableOpacity,
-  WebView,
   Platform
 } from 'react-native';
 
 const {width,height}=Dimensions.get('window');
-import TopTitleCell from '../common/topTitleCell';
+import Icon from 'react-native-vector-icons/Ionicons';
+import TopTitleCell from '../../common/topTitleCell';
 
-export default class VideoWeb extends Component {
+export default class Qcbx extends Component {
     constructor(props) {
     super(props);
     this.state = { text: '' };
   }
   render() {
     return (
+
       <View style={styles.wrapper}>
-        <TopTitleCell title='视屏介绍' goBack={this.toback} leftTitle="返回"/>
-        <WebView
-         source={{uri: 'http://v.qq.com/page/x/5/z/x017958ub5z.html'}}
-         style={{marginTop:Platform.OS == 'ios' ? 55:35,}}
-       />
-       </View>
+        <TopTitleCell title='汽车保险' goBack={this.toback} leftTitle='返回'/>
+
+        <Text style={{marginTop:Platform.OS == 'ios' ? 55:35,}}>正在和保险公司对接中，将在不久后上线...</Text>
+      </View>
     );
   }
   toback=()=>{
@@ -50,9 +45,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor:'white'
    },
-   text:{
-     color:'green',
-     fontSize:14,
-   }
+
+
 
 });

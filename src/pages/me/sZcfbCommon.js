@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
      color:'rgb(85,132,228)',
      fontWeight:'600',
      fontSize:12,
-     alignSelf:'center',
-     marginBottom:20
+     marginBottom:20,
+     marginLeft:10
    },
 
 

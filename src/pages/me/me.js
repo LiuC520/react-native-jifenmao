@@ -21,6 +21,11 @@ const {width,height}=Dimensions.get('window');
 import Icon from 'react-native-vector-icons/Ionicons';
 import MeItem from './meItem';
 import Zcfb from './zcfb';
+import ShowBarcode from './showBarcode';
+import Qcbx from './qcbx/qcbx';
+import Tjyj from './tjyj/tjyj';
+import Wydp from './wydp/wydp';
+import More from './more/more';
 
 export default class Me extends Component {
   render(){
@@ -41,7 +46,7 @@ export default class Me extends Component {
     super(props);
     this.state = {
       username: '无名氏',
-      userlevel:'V1'
+      userlevel:'V1',
     };
   }
   render() {
@@ -57,7 +62,7 @@ export default class Me extends Component {
           </View>
 
           <View style={styles.topBottomView}>
-            <Image source={require('../../images/usercodesmall.png')} style={styles.codeimage}/>
+            <ShowBarcode />
             <Text style={{color:'white',marginLeft:15,marginRight:10}}>|</Text>
             <Text style={{color:'white',marginRight:5}}>切换</Text>
             <Icon
@@ -90,13 +95,13 @@ export default class Me extends Component {
           <TouchableOpacity onPress={this.goTolq}>
             <MeItem lefttitle='养老保险'/>
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.goTolq}>
+          <TouchableOpacity onPress={this.goToQcbx}>
             <MeItem lefttitle='汽车保险'/>
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.goTolq}>
+          <TouchableOpacity onPress={this.goToWydp}>
             <MeItem lefttitle='我有店铺，我要加入'/>
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.goTolq}>
+          <TouchableOpacity onPress={this.goTotjyj}>
             <MeItem lefttitle='推荐有奖，我要推荐'/>
           </TouchableOpacity>
           <TouchableOpacity onPress={this.goTozcfb}>
@@ -105,20 +110,60 @@ export default class Me extends Component {
           <TouchableOpacity onPress={this.goTolq}>
             <MeItem lefttitle='最新资讯'/>
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.goTolq}>
+          <TouchableOpacity onPress={this.goToMore}>
             <MeItem lefttitle='更多'/>
           </TouchableOpacity>
          </ScrollView>
       </View>
     );
   }
-  goTolq=()=>{alert('123')}
+
+
+
+  goTolq=()=>{alert('正在部署中...')}
+  goToQcbx=()=>{
+    const {navigator}=this.props;
+    if (navigator){
+      navigator.push({
+        name:'qcbx',
+        component:Qcbx
+      })
+  }
+}
+  goToWydp=()=>{
+    const {navigator}=this.props;
+    if (navigator){
+      navigator.push({
+        name:'wydp',
+        component:Wydp
+      })
+  }
+}
+
+  goTotjyj=()=>{
+    const {navigator}=this.props;
+    if (navigator){
+      navigator.push({
+        name:'tjyj',
+        component:Tjyj
+      })
+  }
+}
   goTozcfb=()=>{
     const {navigator}=this.props;
     if (navigator){
       navigator.push({
         name:'zcfb',
         component:Zcfb
+      })
+    }
+  }
+  goToMore=()=>{
+    const {navigator}=this.props;
+    if (navigator){
+      navigator.push({
+        name:'more',
+        component:More
       })
     }
   }
@@ -163,16 +208,10 @@ const styles = StyleSheet.create({
    },
    topBottomView:{
      flexDirection:'row',
-    alignItems:'center',
-    alignSelf:'center',
+     alignItems:'center',
      position:'absolute',
      right:30,
      bottom:10
    },
-   codeimage:{
-     width:20,
-     height:20,
-     marginTop:2,
-     backgroundColor:'transparent'
-   }
+
 });

@@ -15,7 +15,8 @@
    Dimensions,
    Image,
    TouchableOpacity,
-   WebView
+   WebView,
+   Platform
  } from 'react-native';
 
  const {width,height}=Dimensions.get('window');
@@ -100,6 +101,8 @@ const styles = StyleSheet.create({
    webView: {
      backgroundColor: '#bbbbbb',
      height: 350,
+     marginTop:Platform.OS == 'ios' ? 55:35,
+
    },
    navButton: {
     width: 20,

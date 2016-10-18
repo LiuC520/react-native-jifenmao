@@ -14,7 +14,8 @@ import {
   Dimensions,
   Image,
   TouchableOpacity,
-  WebView
+  WebView,
+  Platform
 } from 'react-native';
 
 const {width,height}=Dimensions.get('window');
@@ -32,7 +33,8 @@ export default class SellerDetail extends Component {
 
       <View style={styles.wrapper}>
         <TopTitleCell title='商家详情' goBack={this.toback} leftTitle='返回' />
-        <View style={{justifyContent:'center',alignItems:'center'}}>
+
+        <View style={{justifyContent:'center',alignItems:'center',marginTop:Platform.OS == 'ios' ? 55:35,}}>
           <Image source={{uri:this.props.rowData.thumb}} style={styles.bigImage}/>
         </View>
         <View style={styles.fanli}>
@@ -88,7 +90,7 @@ export default class SellerDetail extends Component {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor:'#bbbbbb'
+    backgroundColor:'#bbbbbb',
    },
    bigImage:{
      width:width-60,

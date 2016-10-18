@@ -47,7 +47,9 @@
 -keepclassmembers class *  { @com.facebook.react.uimanager.UIProp <fields>; }
 -keepclassmembers class *  { @com.facebook.react.uimanager.annotations.ReactProp <methods>; }
 -keepclassmembers class *  { @com.facebook.react.uimanager.annotations.ReactPropGroup <methods>; }
-
+-keep class com.tencent.mm.sdk.** {
+   *;
+}
 -dontwarn com.facebook.react.**
 
 # okhttp
