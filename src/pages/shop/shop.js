@@ -100,7 +100,8 @@ const styles = StyleSheet.create({
    },
    webView: {
      backgroundColor: '#bbbbbb',
-     height: 350,
+     //height: 350,
+     flex:1,
      marginTop:Platform.OS == 'ios' ? 55:35,
 
    },
