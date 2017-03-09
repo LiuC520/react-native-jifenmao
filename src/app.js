@@ -31,35 +31,51 @@ export default class App extends Component {
     };
   }
   componentWillMount(){
-    this._initdata().done()
   }
-  async _initdata(){
-    const value = await AsyncStorage.getItem('isFirstLoading');
-    this.setState({
-        isFirst:value
-      })
+  _initdata(){
+    const value = AsyncStorage.getItem('isFirstLoading')
+                              .then((data)=>{
+                                if(!data){
+                                  AsyncStorage.setItem('isFirstLoading','1')
+                                }
+                                this.setState({ isFirst:data })
+                              })
+                              .catch((e)=>{ console.log(e) });
+   
+    
   }
   componentDidMount(){
-
+    this._initdata()
+    
   }
   render() {
-    return (
-      <Navigator
-      initialRoute={{name:this.state.isFirst === null ? 'firstLoad' : 'welcome',component:this.state.isFirst === null ? FirstLoad : Welcome}}
-      configureScene={
-        (route)=>{
-        return Navigator.SceneConfigs.VerticalDownSwipeJump;
+    if(this.state.isFirst){
+      return (
+          <Navigator
+        initialRoute={{
+          name:'welcome',
+          component:Welcome
+        }}
+        configureScene={
+          (route)=>{
+          return Navigator.SceneConfigs.PushFromRight;
+          }
         }
-      }
-      renderScene={
-            (route, navigator) =>
-             {
-            let Component = route.component;
-            return <Component {...route.params} navigator={navigator} />
-        }
-      }/>
+        renderScene={
+              (route, navigator) =>
+              {
+              let Component = route.component;
+              return <Component {...route.params} navigator={navigator} />
+          }
+        }/>
 
-    );
+      );
+    }else{
+      return (
+        <View></View>
+      );
+    }
+    
   }
 }
 

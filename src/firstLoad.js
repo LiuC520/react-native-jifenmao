@@ -43,7 +43,7 @@ export default class FirstLoad extends Component {
        <View style={styles.slide}>
        <Image source={require('./images/welcome04.jpg')} style={styles.images}/>
        <TouchableOpacity onPress={this._toMainPage} style={styles.jump}>
-        <Text style={styles.text}>立即体验</Text>
+          <Text style={styles.text}>立即体验</Text>
        </TouchableOpacity>
        </View>
 

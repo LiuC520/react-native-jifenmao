@@ -35,7 +35,7 @@ export default class Welcome extends Component {
   componentDidMount(){
     //定时每隔1s让时间减一，并显示在text中，然后当时间小于等于0，清除定时器
     //注意此处必须清除定时器，否则，定时会一直开启，消耗内存
-    timeout=setInterval(()=>{
+    this.timeout=setInterval(()=>{
         if (this.state.time > 0) {
           this.setState({
             time:this.state.time-1
@@ -46,15 +46,20 @@ export default class Welcome extends Component {
         console.log('1')
       },1000)
       //3S后直接跳转进入主页
-    setTimeout(()=>{
+    this.timer = setTimeout(()=>{
       this.goToMainPage()
     },3000);
   }
+  componentWillUnmount () {
+    this.timers && clearTimeout(this.timers)
+    this.timeout && clearInterval(this.timeout)
+  }
+  
 //跳转到主页
   goToMainPage=()=>{
     const {navigator}=this.props;
     if (navigator) {
-      navigator.push({
+      navigator.resetTo({
         name:'main',
         component:Main
       });
